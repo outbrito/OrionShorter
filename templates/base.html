@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>{{module}}</title>
+
+<script type="text/javascript" src="/site_media/JS/jquery.js"></script>
+{% block js %}
+{% endblock %}
+
+</head>
+
+<body>
+
+	<div id="title">
+		<h1> OrionShorter </h1>
+	</div>
+	
+	<div id="container">
+		
+		<div id="header">
+			{% block header %}
+			{% endblock %}
+		</div> 
+		
+		<div id="content">
+			Cole a URL aqui: <input type='text' size='100' id='target' class='target' name='target'/>
+			<br/>
+			<br/>
+			<h2 id='shorted'></h2>
+		
+		</div>
+		
+		<div id="footer">
+			{% block footer %}
+			{% endblock %}
+		</div>
+		
+	</div>
+	
+	<script>
+		$('#target').change(function(){
+			$.get('short', {target: $('#target').val()},
+			 function(data){
+			    $('#shorted').html(data);
+			});
+		});
+	</script>
+	
+	
+	
+	
+
+</body>
+</html>
